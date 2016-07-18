@@ -11,8 +11,8 @@
 1. edit `~/.bash_profile` and insert following lines
 
   ```
-  if [ -f "~/.aliases" ]; then
-    source "~/.aliases"
+  if [ -f ~/.aliases ]; then
+    source ~/.aliases
   fi
   ```
 
