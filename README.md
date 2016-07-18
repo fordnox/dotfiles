@@ -2,7 +2,7 @@
 
 1. download `.aliases` file to homedir
 
-  `curl https://raw.githubusercontent.com/fordnox/dofiles/master/.aliases --output ~/.aliases`
+  `curl -s https://raw.githubusercontent.com/fordnox/dotfiles/master/.aliases --output ~/.aliases`
 
 1. check bash file syntax
 
