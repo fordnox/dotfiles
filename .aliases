@@ -1,0 +1,120 @@
+HISTCONTROL="(Function)"
+
+#functions
+
+function storm(){
+	pstorm `pwd`
+}
+
+function targz() {
+	local tmpFile="${@%/}.tar";
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+
+	size=$(
+		stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+		stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+	);
+
+	local cmd="";
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli";
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz";
+		else
+			cmd="gzip";
+		fi;
+	fi;
+
+	echo "Compressing .tar using \`${cmd}\`…";
+	"${cmd}" -v "${tmpFile}" || return 1;
+	[ -f "${tmpFile}" ] && rm "${tmpFile}";
+	echo "${tmpFile}.gz created successfully.";
+}
+
+function sublime(){
+	/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl $1
+}
+
+function transfer() {
+	if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+	tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile;
+}
+
+function json() {
+	if [ -t 0 ]; then # argument
+		python -mjson.tool
+	else # pipe
+		python -mjson.tool
+	fi;
+}
+
+function digga() {
+	dig +nocmd "$1" any +multiline +noall +answer;
+}
+
+function o() {
+	if [ $# -eq 0 ]; then
+		open .;
+	else
+		open "$@";
+	fi;
+}
+
+fresh_install() {
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew update
+	brew install wget
+	brew install git
+	brew install awscli
+	brew install heroku
+	brew install bash-completion
+
+	git config --global alias.undo "reset --soft HEAD^"
+	git config --global alias.cm "checkout master"
+	git config --global alias.logtree "log --graph --oneline --decorate --all"
+	git config --global alias.rr "remote update origin --prune"
+}
+
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+export HISTCONTROL=ignoreboth:erasedups
+
+#add __git_ps1
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+
+#git aware prompt
+export PS1='\[\e[01;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else echo "\[\e[31m\] ✘ "; fi`\[\e[00;37m\]\u\[\e[01;37m\]:`[[ $(git status 2> /dev/null | head -n2 | tail -n1) != "# Changes to be committed:" ]] && echo "\[\e[31m\]" || echo "\[\e[33m\]"``[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] || echo "\[\e[32m\]"`$(__git_ps1 "(%s)\[\e[00m\]")\[\e[01;34m\]\w\[\e[00m\]\$ '
+
+#aliases
+
+alias gitprune="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
+alias digga="digga"
+alias o="o"
+alias json="json"
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias transfer="transfer"
+alias p="cd ~/www"
+alias d="cd ~/Downloads"
+alias hosts="sudo nano /etc/hosts"
+alias dr="cd ~/Dropbox"
+alias s="sublime"
+alias targz="targz"
+alias wtf="top -u -s 10"
+alias storm="storm"
+alias ll="ls -laF -G"
+alias g="git"
+alias h="history"
+alias lsd="ls -lF -G | grep --color=never '^d'"
+alias week="date +%V"
+alias j="ssh jenkins"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipl="ipconfig getifaddr en0"
+alias phpserver="php -S localhost:7000"
+alias fresh_install="fresh_install"
