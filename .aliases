@@ -94,6 +94,7 @@ alias p="cd ~/www"
 alias d="cd ~/Downloads"
 alias dr="cd ~/Dropbox"
 alias g="git"
+alias gp='git pull --rebase'
 alias gitprune="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 alias digga="digga"
 alias o="o"
