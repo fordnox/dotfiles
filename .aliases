@@ -8,6 +8,10 @@ function storm(){
 	pstorm `pwd`
 }
 
+function ns() {
+    dig +short ns "$1"
+}
+
 function targz() {
 	local tmpFile="${@%/}.tar";
 	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
