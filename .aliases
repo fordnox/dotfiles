@@ -96,6 +96,8 @@ export PS1='\[\e[01;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else ech
 #aliases
 
 
+
+alias c="composer update --ignore-platform-reqs"
 alias p="cd ~/www"
 alias d="cd ~/Downloads"
 alias dr="cd ~/Dropbox"
