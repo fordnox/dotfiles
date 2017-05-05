@@ -67,6 +67,8 @@ function o() {
 function fresh_install() {
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew update
+	brew tap homebrew/php
+	brew install composer
 	brew install wget
 	brew install git
 	brew install awscli
