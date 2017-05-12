@@ -71,6 +71,7 @@ function o() {
 function fresh_install() {
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew update
+	brew tap homebrew/versions
 	brew tap homebrew/php
 	brew install composer
 	brew install wget
@@ -78,7 +79,8 @@ function fresh_install() {
 	brew install awscli
 	brew install heroku
 	brew install bash-completion
-
+        brew install php71
+	
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
 	git config --global alias.logtree "log --graph --oneline --decorate --all"
