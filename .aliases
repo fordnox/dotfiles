@@ -4,6 +4,10 @@ HISTCONTROL="(Function)"
 
 #functions
 
+function doc(){
+       docker exec -ti $1 /bin/bash
+}
+
 function storm(){
 	pstorm `pwd`
 }
