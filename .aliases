@@ -80,6 +80,7 @@ function fresh_install() {
 	brew install heroku
 	brew install bash-completion
         brew install php71
+	brew install npm
 	
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
