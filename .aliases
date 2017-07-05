@@ -4,6 +4,10 @@ HISTCONTROL="(Function)"
 
 #functions
 
+function genpass() {
+        openssl rand -base64 12
+}
+
 function doc(){
        docker exec -ti $1 /bin/bash
 }
