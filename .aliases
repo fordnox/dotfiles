@@ -9,7 +9,7 @@ function genpass() {
 }
 
 function doc(){
-       docker exec -ti $1 /bin/bash
+       docker exec -ti `docker ps | grep $1 | cut -d" " -f1` /bin/bash
 }
 
 function storm(){
