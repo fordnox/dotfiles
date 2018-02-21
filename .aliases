@@ -114,6 +114,7 @@ alias c="composer update --ignore-platform-reqs"
 alias p="cd ~/www"
 alias d="cd ~/Downloads"
 alias dr="cd ~/Dropbox"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 alias g="git"
 alias gm="git fetch origin && git rebase origin/master"
 alias gp='git pull --rebase'
