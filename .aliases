@@ -83,9 +83,10 @@ function fresh_install() {
 	brew install awscli
 	brew install heroku
 	brew install bash-completion
-        brew install php71
+	brew install php71
 	brew install npm
-	
+	brew install gpg
+		
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
 	git config --global alias.logtree "log --graph --oneline --decorate --all"
