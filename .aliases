@@ -4,6 +4,22 @@ HISTCONTROL="(Function)"
 
 #functions
 
+function flac2mp3() {
+    input_dir="$1"
+    printf "Input dir is:\n%s\n\n" "$input_dir"
+    find "$input_dir" -name "*.flac" -print0 | while read -d $'\0' item; do
+    (
+    output="${item%%.flac}.mp3"
+    printf "\n%s\n" "$divder"
+    printf "\nINPUT FLAC:\n%s\n\n" "$item"
+    printf "\nOUTPUT MP3:\n%s\n\n" "$output"
+    set -x
+    ffmpeg -y -i "$item" -aq 0 "$output" < /dev/null
+    set +x
+    )
+    done
+}
+
 function genpass() {
         openssl rand -base64 12
 }
@@ -86,6 +102,7 @@ function fresh_install() {
 	brew install php71
 	brew install npm
 	brew install gpg
+	brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 		
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
