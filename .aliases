@@ -129,7 +129,7 @@ export PS1='\[\e[01;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else ech
 
 
 alias c="composer update --ignore-platform-reqs"
-alias p="cd ~/www"
+alias p="cd ~/www && ll"
 alias d="cd ~/Downloads"
 alias dr="cd ~/Dropbox"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
