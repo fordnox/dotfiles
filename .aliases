@@ -93,8 +93,6 @@ function fresh_install() {
 	brew remove --force $(brew list) --ignore-dependencies
 	brew cleanup
 	brew update
-	brew tap homebrew/versions
-	brew tap homebrew/php
 	brew install composer
 	brew install wget
 	brew install git
