@@ -90,6 +90,8 @@ function o() {
 
 function fresh_install() {
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew remove --force $(brew list) --ignore-dependencies
+	brew cleanup
 	brew update
 	brew tap homebrew/versions
 	brew tap homebrew/php
