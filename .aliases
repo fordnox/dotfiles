@@ -97,7 +97,7 @@ function fresh_install() {
 	brew install wget
 	brew install git
 	brew install awscli
-	brew install heroku
+	brew install heroku/brew/heroku
 	brew install bash-completion
 	brew install php71
 	brew install npm
