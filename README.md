@@ -8,7 +8,7 @@
 
   `bash -n ~/.aliases`
 
-1. edit `~/.bash_profile` and insert following lines
+1. edit `~/.zprofile` and insert following lines
 
   ```
   if [ -f ~/.aliases ]; then
@@ -18,7 +18,7 @@
 
 1. run
 
-  `source ~/.bash_profile`
+  `source ~/.zprofile`
 
 1. list aliases
 
