@@ -20,6 +20,10 @@ function flac2mp3() {
     done
 }
 
+function whoise() {
+        whois $1 | grep Expir
+}
+
 function genpass() {
         openssl rand -base64 12
 }
