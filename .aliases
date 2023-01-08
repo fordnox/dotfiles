@@ -97,17 +97,12 @@ function fresh_install() {
 	brew remove --force $(brew list) --ignore-dependencies
 	brew cleanup
 	brew update
-	brew install composer
 	brew install wget
 	brew install git
-	brew install awscli
-	brew install heroku/brew/heroku
 	brew install bash-completion
-	brew install php71
-	brew install npm
 	brew install gpg
 	brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
-		
+
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
 	git config --global alias.logtree "log --graph --oneline --decorate --all"
