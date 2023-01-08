@@ -32,10 +32,6 @@ function doc(){
        docker exec -ti `docker ps | grep $1 | cut -d" " -f1` /bin/bash
 }
 
-function storm(){
-	pstorm `pwd`
-}
-
 function ns() {
     dig +short ns "$1"
 }
@@ -126,12 +122,8 @@ export PS1='\[\e[01;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] ✔ "; else ech
 #aliases
 
 
-
-alias c="composer update --ignore-platform-reqs"
 alias p="cd ~/www && ll"
 alias d="cd ~/Downloads"
-alias dr="cd ~/Dropbox"
-alias s="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 alias g="git"
 alias gm="git fetch origin && git rebase origin/master"
@@ -146,13 +138,10 @@ alias transfer="transfer"
 alias hosts="sudo nano /etc/hosts"
 alias targz="targz"
 alias wtf="top -u -s 10"
-alias storm="storm"
 alias ll="ls -laF -G"
 alias h="history"
 alias lsd="ls -lF -G | grep --color=never '^d'"
 alias week="date +%V"
-alias j="ssh jenkins"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ipconfig getifaddr en0"
 alias shere="python3 -m http.server"
-alias fresh_install="fresh_install"
