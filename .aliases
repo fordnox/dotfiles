@@ -93,8 +93,9 @@ function fresh_install() {
 	brew remove --force $(brew list) --ignore-dependencies
 	brew cleanup
 	brew update
+	
 	brew install wget
-	brew install bash-completion		
+	brew install zsh-completion		
 		
 	git config --global alias.undo "reset --soft HEAD^"
 	git config --global alias.cm "checkout master"
@@ -106,6 +107,9 @@ function fresh_install() {
 	brew install --cask iterm2
 	brew install --cask google-chrome
 	brew install --cask visual-studio-code
+	brew install --cask tunnelblick
+	brew install --cask docker
+	brew install helm
 	
 }
 
