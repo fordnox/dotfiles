@@ -102,13 +102,14 @@ function fresh_install() {
 	git config --global alias.logtree "log --graph --oneline --decorate --all"
 	git config --global alias.rr "remote update origin --prune"
 	
-
-	# magnet
+	# https://ohmyz.sh/
+	brew install --cask rectangle
 	brew install --cask iterm2
 	brew install --cask google-chrome
 	brew install --cask visual-studio-code
 	brew install --cask tunnelblick
 	brew install --cask docker
+	brew install --cask telegram	
 	brew install helm
 	
 }
