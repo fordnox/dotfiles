@@ -109,7 +109,8 @@ function fresh_install() {
 	brew install --cask visual-studio-code
 	brew install --cask tunnelblick
 	brew install --cask docker
-	brew install --cask telegram	
+	brew install --cask telegram
+	brew install --cask sequel-ace
 	brew install helm
 	
 }
